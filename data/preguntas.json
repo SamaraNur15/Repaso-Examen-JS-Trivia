@@ -1,0 +1,164 @@
+{
+  "preguntas": [
+    {
+      "id": 1,
+      "categoria": "Matemáticas",
+      "pregunta": "¿Cuánto es 2 + 2?",
+      "opciones": ["3", "4", "5", "6"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 2,
+      "categoria": "Ciencia",
+      "pregunta": "¿Cuál es el símbolo químico del agua?",
+      "opciones": ["H2O", "CO2", "O2", "NaCl"],
+      "respuestaCorrecta": 0,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 3,
+      "categoria": "Geografía",
+      "pregunta": "¿Cuál es la capital de España?",
+      "opciones": ["Barcelona", "Madrid", "Valencia", "Sevilla"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 4,
+      "categoria": "Historia",
+      "pregunta": "¿En qué año llegó Cristóbal Colón a América?",
+      "opciones": ["1490", "1491", "1492", "1493"],
+      "respuestaCorrecta": 2,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 5,
+      "categoria": "Deportes",
+      "pregunta": "¿Cuántos jugadores hay en un equipo de fútbol?",
+      "opciones": ["9", "10", "11", "12"],
+      "respuestaCorrecta": 2,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 6,
+      "categoria": "Arte",
+      "pregunta": "¿Quién pintó la Mona Lisa?",
+      "opciones": ["Picasso", "Leonardo da Vinci", "Van Gogh", "Monet"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 7,
+      "categoria": "Naturaleza",
+      "pregunta": "¿Cuántas patas tiene una araña?",
+      "opciones": ["6", "8", "10", "12"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 8,
+      "categoria": "Tecnología",
+      "pregunta": "¿Qué empresa creó el sistema operativo Windows?",
+      "opciones": ["Apple", "Microsoft", "Google", "IBM"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 9,
+      "categoria": "Música",
+      "pregunta": "¿Cuántas notas musicales básicas existen?",
+      "opciones": ["5", "6", "7", "8"],
+      "respuestaCorrecta": 2,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 10,
+      "categoria": "Literatura",
+      "pregunta": "¿Quién escribió 'Don Quijote de la Mancha'?",
+      "opciones": ["Lope de Vega", "Miguel de Cervantes", "García Lorca", "Calderón"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 11,
+      "categoria": "Matemáticas",
+      "pregunta": "¿Cuánto es 10 × 5?",
+      "opciones": ["45", "50", "55", "60"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 12,
+      "categoria": "Ciencia",
+      "pregunta": "¿Cuántos planetas hay en nuestro sistema solar?",
+      "opciones": ["7", "8", "9", "10"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 13,
+      "categoria": "Geografía",
+      "pregunta": "¿En qué continente está México?",
+      "opciones": ["América del Norte", "América del Sur", "Europa", "Asia"],
+      "respuestaCorrecta": 0,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 14,
+      "categoria": "Historia",
+      "pregunta": "¿Cuántos días tiene una semana?",
+      "opciones": ["5", "6", "7", "8"],
+      "respuestaCorrecta": 2,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 15,
+      "categoria": "Deportes",
+      "pregunta": "¿En qué deporte se usa una pelota naranja?",
+      "opciones": ["Fútbol", "Tenis", "Baloncesto", "Voleibol"],
+      "respuestaCorrecta": 2,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 16,
+      "categoria": "Naturaleza",
+      "pregunta": "¿Qué color obtenes al mezclar azul y amarillo?",
+      "opciones": ["Morado", "Verde", "Naranja", "Rojo"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 17,
+      "categoria": "Tecnología",
+      "pregunta": "¿Qué dispositivo usas para escribir en una computadora?",
+      "opciones": ["Mouse", "Teclado", "Monitor", "Parlante"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 18,
+      "categoria": "Música",
+      "pregunta": "¿Cómo se llama el instrumento de cuerda más pequeño?",
+      "opciones": ["Guitarra", "Violín", "Piano", "Flauta"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 19,
+      "categoria": "Arte",
+      "pregunta": "¿Cuántos colores primarios hay?",
+      "opciones": ["2", "3", "4", "5"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    },
+    {
+      "id": 20,
+      "categoria": "Literatura",
+      "pregunta": "¿Cómo se llama el primer libro de Harry Potter?",
+      "opciones": ["La cámara secreta", "La piedra filosofal", "El prisionero de Azkaban", "El cáliz de fuego"],
+      "respuestaCorrecta": 1,
+      "dificultad": "fácil"
+    }
+  ]
+}

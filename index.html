@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎮 Juego de Trivia - Examen JavaScript</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <!-- Pantalla de inicio -->
+      <div id="startScreen" class="start-screen">
+        <h1>🎮 Juego de Trivia</h1>
+        <p>¡Pon a prueba tus conocimientos!</p>
+        <ul style="text-align: left; max-width: 400px; margin: 0 auto">
+          <li>📝 5 preguntas de cultura general</li>
+          <li>⏰ 10 segundos por pregunta</li>
+          <li>🏆 +10 puntos por respuesta correcta</li>
+          <li>💪 ¡Demuestra tus conocimientos!</li>
+        </ul>
+        <button id="startBtn" class="start-btn">Comenzar Juego</button>
+      </div>
+
+      <!-- Pantalla del juego -->
+      <div id="gameScreen" class="game-screen">
+        <!-- Información del juego -->
+        <div class="question-counter">
+          Pregunta <span id="currentQuestion">1</span> de
+          <span id="totalQuestions">5</span>
+        </div>
+
+        <div class="score-display">
+          Puntuación: <span id="currentScore">0</span> puntos
+        </div>
+
+        <!-- Temporizador -->
+        <div class="timer-container">
+          <div class="timer-bar">
+            <div id="timerFill" class="timer-fill"></div>
+          </div>
+          <div class="timer-text">
+            Tiempo restante: <span id="timeLeft">10</span> segundos
+          </div>
+        </div>
+
+        <!-- Contenedor de la pregunta -->
+        <div class="question-container">
+          <div id="questionText" class="question-text">
+            <!-- Aquí se cargará la pregunta actual -->
+          </div>
+
+          <div id="optionsContainer" class="options-container">
+            <!-- Aquí se cargarán las opciones de respuesta -->
+          </div>
+
+          <button id="nextBtn" class="next-btn">Siguiente Pregunta</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/juego.js"></script>
+  </body>
+</html>

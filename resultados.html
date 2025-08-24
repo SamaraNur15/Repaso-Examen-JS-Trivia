@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏆 Resultados - Juego de Trivia</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"
+    />
+    <link rel="stylesheet" href="./css/resultados.css" />
+  </head>
+  <body>
+    <div class="results-container">
+      <h1>🏆 Resultados del Juego</h1>
+
+      <!-- Mensaje de rendimiento -->
+      <div id="performanceMessage" class="performance-message">
+        <!-- Se llenará dinámicamente con JavaScript -->
+      </div>
+
+      <!-- Puntuación final -->
+      <div class="final-score">
+        <div id="finalScore" class="score-number">0</div>
+        <div class="score-label">Puntuación Final</div>
+      </div>
+
+      <!-- Estadísticas de la partida -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span id="correctAnswers" class="stat-number">0</span>
+          <div class="stat-label">Respuestas Correctas</div>
+        </div>
+        <div class="stat-card">
+          <span id="totalQuestions" class="stat-number">5</span>
+          <div class="stat-label">Total de Preguntas</div>
+        </div>
+        <div class="stat-card">
+          <span id="averageTime" class="stat-number">0.0</span>
+          <div class="stat-label">Tiempo Promedio (s)</div>
+        </div>
+        <div class="stat-card">
+          <span id="accuracy" class="stat-number">0%</span>
+          <div class="stat-label">Precisión</div>
+        </div>
+      </div>
+
+      <!-- Ranking histórico -->
+      <div class="ranking-section">
+        <h2 class="ranking-title">🥇 Mejores Puntuaciones</h2>
+        <ol id="rankingList" class="ranking-list">
+          <!-- Se llenará dinámicamente con JavaScript -->
+        </ol>
+        <div id="emptyRanking" class="empty-ranking" style="display: none">
+          No hay puntuaciones guardadas aún. ¡Sé el primero en jugar!
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="action-buttons">
+        <a href="./index.html" class="btn btn-primary">🔄 Jugar de Nuevo</a>
+        <button id="clearRankingBtn" class="btn btn-danger">
+          🗑️ Limpiar Ranking
+        </button>
+        <button id="shareBtn" class="btn btn-secondary">
+          📤 Compartir Resultado
+        </button>
+      </div>
+
+      <!-- Información adicional -->
+      <div style="margin-top: 30px; color: #888; font-size: 0.9em">
+        <p>
+          💡 <strong>Consejo:</strong> ¡Responde correctamente para obtener 10
+          puntos por pregunta!
+        </p>
+        <p>
+          🎯 <strong>Puntuación máxima posible:</strong> 50 puntos (5 preguntas
+          × 10 puntos)
+        </p>
+      </div>
+    </div>
+
+    <script src="./js/resultados.js"></script>
+  </body>
+</html>
