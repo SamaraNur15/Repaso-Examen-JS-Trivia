@@ -1,4 +1,4 @@
-# 🎮 Examen de JavaScript Frontend - Juego de Trivia
+# 🎮 Repaso Examen de JavaScript Frontend - Juego de Trivia
 
 ## ⏰ Información del Examen
 
