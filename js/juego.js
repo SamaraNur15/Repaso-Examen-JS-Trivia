@@ -54,9 +54,27 @@ const optionsContainer = document.getElementById('optionsContainer');
  * - Guardar las preguntas en la variable preguntasOriginales
  * - Manejar errores con try-catch y mostrar alert en caso de error
  */
+
 async function cargarPreguntas() {
+    
+    try {
+        const respuesta = await fetch('./data/preguntas.json');
+        if (!respuesta.ok) {
+            throw new Error('Error al cargar las preguntas');
+        }
+        const datos = await respuesta.json();
+
+        preguntasOriginales = Array.isArray(datos.preguntas) ? datos.preguntas : [];
+        console.log('Preguntas cargadas:', preguntasOriginales);
     // Implementar aquí el fetch del JSON
+    }
+    catch(error) {
+            alert('No se pudieron cargar las preguntas. Inténtalo de nuevo más tarde.');
+            console.error('Error:', error);
+    };
+
 }
+
 
 /**
  * TODO 4: Función para seleccionar 5 preguntas aleatorias para el juego
@@ -67,7 +85,12 @@ async function cargarPreguntas() {
  */
 function seleccionarPreguntasAleatorias() {
     // Implementar la selección aleatoria de 5 preguntas
+    const copiaPreguntas = [...preguntasOriginales];
+    const preguntasMezcladas = mezclarArray(copiaPreguntas);
+    preguntasJuego = preguntasMezcladas.slice(0, 5);
+    console.log('Preguntas seleccionadas para el juego:', preguntasJuego);
 }
+
 
 /**
  * TODO 5: Función para inicializar el juego
@@ -80,7 +103,15 @@ function seleccionarPreguntasAleatorias() {
  */
 function iniciarJuego() {
     // Implementar la inicialización del juego
+    startScreen.style.display = 'none';
+    gameScreen.style.display = 'block';
+    preguntaActual = 0;
+    puntuacion = 0;
+    seleccionarPreguntasAleatorias();
+    totalQuestionsSpan.textContent = preguntasJuego.length;
+    mostrarPregunta();
 }
+
 
 /**
  * TODO 6: Función para mostrar la pregunta actual
@@ -94,6 +125,23 @@ function iniciarJuego() {
  */
 function mostrarPregunta() {
     // Implementar la lógica para mostrar una pregunta
+    if(preguntaActual >= preguntasJuego.length){
+        finalizarJuego();
+        return;
+    }
+
+    currentQuestionSpan.textContent = (preguntaActual + 1) + '/' + preguntasJuego.length;
+
+    const pregunta = preguntasJuego[preguntaActual];
+    questionText.textContent = pregunta.pregunta;
+    
+    optionsContainer.innerHTML = '';
+    nextBtn.style.display = 'none';
+
+    crearBotonesOpciones();
+    
+    iniciarTemporizador();
+
 }
 
 /**
@@ -107,6 +155,18 @@ function mostrarPregunta() {
  */
 function crearBotonesOpciones() {
     // Implementar la creación de botones de opciones
+     optionsContainer.innerHTML = '';
+    //obtener la posicion dela pregunta actual
+    const opciones = preguntasJuego[preguntaActual].opciones;
+
+    //crear botones para cada opcion
+    opciones.forEach((texto, i) => {
+        const btn = document.createElement('button');
+        btn.classList.add('option-btn');
+        btn.textContent = texto;
+        btn.addEventListener('click', () => seleccionarRespuesta(i));
+        optionsContainer.appendChild(btn);
+    });
 }
 
 /**
@@ -122,6 +182,20 @@ function crearBotonesOpciones() {
  */
 function seleccionarRespuesta(indiceSeleccionado) {
     // Implementar la lógica de selección de respuesta
+    clearInterval(temporizador);
+
+    const p = preguntasJuego[preguntaActual];
+    const indiceCorrecta = p.respuestaCorrecta;
+
+    // Verificar si la respuesta es correcta
+    if (indiceSeleccionado === indiceCorrecta) {
+        puntuacion += 10; // Sumar puntos
+    }
+    actualizarPuntuacion();
+
+    mostrarFeedback(indiceSeleccionado, indiceCorrecta);
+
+    nextBtn.style.display = 'block';
 }
 
 /**
@@ -132,7 +206,24 @@ function seleccionarRespuesta(indiceSeleccionado) {
  * - Si la respuesta seleccionada es incorrecta, agregar clase 'incorrect'
  */
 function mostrarFeedback(indiceSeleccionado, indiceCorrecta) {
-    // Implementar el feedback visual
+    // Obtener todos los botones de opciones
+    const botones = document.querySelectorAll('.option-btn');
+
+    // Recorrer todos los botones
+    botones.forEach((btn, i) => {
+        // Deshabilitar el botón
+        btn.disabled = true;
+
+        // Agregar clase 'correct' al botón de la respuesta correcta
+        if (i === indiceCorrecta) {
+            btn.classList.add('correct');
+        }
+
+        // Si la respuesta seleccionada es incorrecta, agregar clase 'incorrect'
+        if (indiceSeleccionado === i && indiceSeleccionado !== indiceCorrecta && indiceSeleccionado !== -1) {
+            btn.classList.add('incorrect');
+        }
+    });
 }
 
 /**
@@ -145,6 +236,26 @@ function mostrarFeedback(indiceSeleccionado, indiceCorrecta) {
  */
 function iniciarTemporizador() {
     // Implementar el temporizador
+    tiempoRestante = 10;
+    clearInterval(temporizador);
+
+    // ✅ Mostrar estado inicial
+    timeLeftSpan.textContent = tiempoRestante;
+    timerFill.style.width = '100%';
+
+    // Iniciar el intervalo
+    temporizador = setInterval(() => {
+        tiempoRestante--;
+        timeLeftSpan.textContent = tiempoRestante;
+        timerFill.style.width = (tiempoRestante * 10) + '%';
+
+        if (tiempoRestante <= 0) {
+            clearInterval(temporizador);
+            // Deshabilitar botones y mostrar feedback si quieres
+            nextBtn.style.display = 'block';
+            seleccionarRespuesta(-1); // Pasar -1 o algún valor que indique que no se seleccionó nada
+        }
+    }, 1000);
 }
 
 /**
@@ -155,6 +266,12 @@ function iniciarTemporizador() {
  */
 function siguientePregunta() {
     // Implementar el avance a la siguiente pregunta
+    preguntaActual++;
+    if (preguntaActual < preguntasJuego.length) {
+        mostrarPregunta();
+    } else {
+        finalizarJuego();
+    }
 }
 
 /**
@@ -163,6 +280,7 @@ function siguientePregunta() {
  */
 function actualizarPuntuacion() {
     // Implementar la actualización de puntuación
+    currentScoreSpan.textContent = puntuacion;
 }
 
 /**
@@ -173,6 +291,17 @@ function actualizarPuntuacion() {
  */
 function finalizarJuego() {
     // Implementar la finalización del juego
+    const datosPartida = {
+        puntuacion: puntuacion,
+        fecha: new Date().toLocaleString(),
+        respuestasCorrectas: Math.round(puntuacion / 10)
+    }
+    
+    localStorage.setItem('ultimaPartida', JSON.stringify(datosPartida));
+
+    // Redirigir a la página de resultados
+    window.location.href = 'resultados.html';
+
 }
 
 // ==========================================
@@ -188,6 +317,14 @@ function finalizarJuego() {
  */
 document.addEventListener('DOMContentLoaded', async function() {
     // Implementar la inicialización
+    // Cargar las preguntas al iniciar la página
+    await cargarPreguntas();
+
+    // Event listener para el botón de inicio
+    startBtn.addEventListener('click', iniciarJuego);
+
+    // Event listener para el botón "Siguiente"
+    nextBtn.addEventListener('click', siguientePregunta);
 });
 
 // ==========================================
